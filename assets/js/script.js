@@ -6,6 +6,9 @@ document.querySelector('.header__mob-menu').onclick = function() {
     document.querySelector('.header-menu').classList.toggle('is-active');
 }
 
+document.getElementById("publications").style.display = "block";
+document.getElementById("education").style.display = "block";
+
 function next_tab(tab_name) {
     var i;
     // var x = document.getElementsByClassName("page__intro");
