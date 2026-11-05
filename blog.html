@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AI Notebook | Romina Etezadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Tabs -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html#about" class="nav-brand">Romina Etezadi</a>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#interests">Interests</a>
+                <a href="index.html#news">News</a>
+                <a href="index.html#publications">Publications</a>
+                <a href="blog.html" class="nav-special nav-active">My AI Notebook</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="blog-page">
+            <h2>My AI Notebook</h2>
+            <p>
+                This is a space where I share and document my personal analyses, thoughts, reflections, and notes on things I find interesting, particularly in the world of AI. 
+                The idea is to have a place to collect my thoughts, make sense of what I learn, revisit interesting ideas, and share my perspectives with others. Not everything here needs to be a polished article or a definitive opinion. Some posts might simply be questions, experiments, or thoughts in progress.
+            </p>
+            <input type="search" id="blog-search" class="blog-search" placeholder="Search articles by title..." aria-label="Search articles by title">
+
+            <div id="post-list"></div>
+            <p id="no-results" class="blog-empty" hidden>No articles match your search.</p>
+        </section>
+
+        <footer>
+            <p><a href="index.html">← Back to Main Profile</a></p>
+            <p>&copy; 2026 Romina Etezadi.</p>
+        </footer>
+    </div>
+
+    <script src="posts.js"></script>
+    <script>
+        const list = document.getElementById("post-list");
+        const search = document.getElementById("blog-search");
+        const noResults = document.getElementById("no-results");
+
+        const sorted = POSTS.slice().sort((a, b) => b.date.localeCompare(a.date));
+
+        function formatDate(iso) {
+            return new Date(iso + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+        }
+
+        function render(query) {
+            const q = query.trim().toLowerCase();
+            const matches = sorted.filter(p => p.title.toLowerCase().includes(q));
+
+            list.innerHTML = "";
+            for (const post of matches) {
+                const item = document.createElement("a");
+                item.className = "post-item";
+                item.href = "article.html?id=" + encodeURIComponent(post.id);
+
+                const title = document.createElement("span");
+                title.className = "post-title";
+                title.textContent = post.title;
+
+                const date = document.createElement("span");
+                date.className = "post-date";
+                date.textContent = formatDate(post.date);
+
+                const summary = document.createElement("span");
+                summary.className = "post-summary";
+                summary.textContent = post.summary;
+
+                item.append(title, date, summary);
+                list.appendChild(item);
+            }
+            noResults.hidden = matches.length > 0;
+        }
+
+        search.addEventListener("input", () => render(search.value));
+        render("");
+    </script>
+
+</body>
+</html>
