@@ -1,15 +1,3 @@
-/*
- * Blog posts.
- *
- * To add a new article, copy one of the objects below and change:
- *   id      - a unique short name used in the URL (letters, numbers, dashes only)
- *   title   - the article title (this is what the search looks at)
- *   date    - the publication date, in YYYY-MM-DD format
- *   summary - one or two sentences shown in the article list
- *   content - the body of the article, written in HTML (<p>, <h3>, <ul>, <a>, <img>, ...)
- *
- * Posts are shown newest first, sorted by date automatically.
- */
 const POSTS = [
     {
         id: "nlp-research-trends",
@@ -113,7 +101,7 @@ const POSTS = [
             </p>
             <p>
                The most interesting observation (for me!) is that the topics trends between ACL and EMNLP are mainly the same.
-               Considering the growing number of papers being published (again you can check my <a href="article.html?id=nlp-research-trends" target="_blank" rel="noopener noreferrer">previous post</a>) and the increasing similarity in research topics, it becomes particularly important to identify meaningful research gaps, distinguish genuinely novel contributions, and explore underinvestigated directions that can advance the field. Well this is my opinion! You can disagree with me :) 
+               Considering the growing number of papers being published (again you can check my <a href="article.html?id=nlp-research-trends" target="_blank" rel="noopener noreferrer">previous post</a>) and the increasing similarity in research topics, it becomes particularly important to identify meaningful research gaps, distinguish genuinely novel contributions, and explore underinvestigated directions that can advance the field. Well this is my opinion!  
 
             </p>
         `
